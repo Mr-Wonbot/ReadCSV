@@ -20,18 +20,18 @@ import java.util.List;
  * @author A-Rod
  */
 public class ReadCSV {
-
-    private static String fileOutput = "C:\\Users\\A-Rod.CSCTeam-PC\\Desktop\\BrowAndRoot.csv";
+    
     private static final String fileName = "C:\\Users\\A-Rod.CSCTeam-PC\\Desktop\\BrowAndRoot.csv";
+    private static String fileOutput = "C:\\Users\\A-Rod.CSCTeam-PC\\Desktop\\ResultBrowAndRoot.csv";
     /**
      * @param args the command line arguments
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here 
-        
+
         String thisLine = null;
-       
+
         List<String> Stop = new ArrayList<>();
         int inc = 1;
 
@@ -39,7 +39,7 @@ public class ReadCSV {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             while ((thisLine = br.readLine()) != null) {
                 System.out.println(thisLine);
-                 String[] nextLine = null;
+                String[] nextLine = null;
                 //Replaces  "Cart "  with  "New Page"
                 if (5 == nextLine[0].length()) {
                     Stop.add("New Page " + String.valueOf(inc));
@@ -50,7 +50,7 @@ public class ReadCSV {
                 }
                 Stop.add(0, "STOP");//adds this string at the top of the arraylist
                 Stop.add(1, "");//adds an empty cell 
-                //calls to writing method
+                StopArrays(Stop);//calls to writing method
                 // System.out.println(nextLine[2]);
             }
 
