@@ -5,6 +5,7 @@
  */
 package readcsv;
 
+import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -14,29 +15,44 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 /**
  *
  * @author A-Rod
  */
 public class ReadCSV {
-    
+
     private static final String fileName = "C:\\Users\\A-Rod.CSCTeam-PC\\Desktop\\BrowAndRoot.csv";
     private static String fileOutput = "C:\\Users\\A-Rod.CSCTeam-PC\\Desktop\\ResultBrowAndRoot.csv";
+    //Create a file chooser
+    final JFileChooser fc = new JFileChooser();
+
+//In response to a button click:
     /**
      * @param args the command line arguments
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here 
-
+        ChoosFile cf = new ChoosFile();
         String thisLine = null;
 
         List<String> Stop = new ArrayList<>();
         int inc = 1;
 
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                //Turn off metal's use of bold fonts
+                UIManager.put("swing.boldMetal", Boolean.FALSE);
+                cf.createAndShowGUI();
+            }
+        });
+
         try {
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            BufferedReader br = new BufferedReader(new FileReader(fileName), ',');
             while ((thisLine = br.readLine()) != null) {
                 System.out.println(thisLine);
                 String[] nextLine = null;
