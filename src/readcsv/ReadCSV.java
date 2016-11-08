@@ -21,13 +21,15 @@ import java.util.List;
  */
 public class ReadCSV {
 
+    private static String fileOutput = "C:\\Users\\A-Rod.CSCTeam-PC\\Desktop\\BrowAndRoot.csv";
+    private static final String fileName = "C:\\Users\\A-Rod.CSCTeam-PC\\Desktop\\BrowAndRoot.csv";
     /**
      * @param args the command line arguments
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here 
-        String fileName = "C:\\Users\\A-Rod.CSCTeam-PC\\Desktop\\BrowAndRoot.txt";
+        
         String thisLine = null;
        
         List<String> Stop = new ArrayList<>();
@@ -58,7 +60,7 @@ public class ReadCSV {
     }
 
     public static void StopArrays(List<String> Stop) throws Exception {
-        try (BufferedWriter out = new BufferedWriter(new FileWriter("C:\\Users\\A-Rod.CSCTeam-PC\\Desktop\\Result.txt"))) {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(fileOutput))) {
             PrintWriter writer = new PrintWriter(out);
 
             String[] StopArray = Stop.toArray(new String[Stop.size()]); //converts arraylist to array[]
